@@ -3,8 +3,8 @@ function deleteMutant(id, li){
     url: mutantsUrl + '/' + id,
     method: 'delete',
     success: function(){
-      if (li){
-        li.remove();
+      if (li) {
+          li.remove();
       }
     }
   });
