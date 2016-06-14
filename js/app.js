@@ -6,6 +6,8 @@ $(document).on('click', 'a.delete', function(ev){
   deleteMutant(id, li);
 });
 
+$('form').on('submit', createMutant);
+
 // Only get ajax after everything has loaded
 $(function(){
   $.get({

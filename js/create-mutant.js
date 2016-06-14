@@ -1,17 +1,15 @@
-function processMutants(mutants){
-  $.each(mutants, function(i, mutant){
-    addMutant(mutant);
+function createMutant(ev){
+  ev.preventDefault();
+  var mutantName = ev.currentTarget.mutantName.value;
+  $.post({
+    url: mutantsUrl,
+    data: {
+      mutant:{
+        mutant_name: mutantName,
+        real_name: 'Real-world ' + mutantName,
+        power: 'Ajax!'
+      }
+    },
+    success: addMutant // Just calling function - not returning anything so no parenthesis
   });
-}
-
-function addMutant(mutant){
-  var li = $('li.template') // Save a selection of an element by class name to a variable li
-    .clone()
-    .removeClass('template') // Remove the class template from each li
-    .attr('data-id', mutant.id); // Set the attribute data-id to its value mutant.id
-
-  li.find('.mutant-name') // with .find() get the descendants of each elemen in the current set of matched elements of li, filtered by a class selector
-    .html(mutant.mutant_name); //set html to that value
-
-$('#mutantList').append(li);
 }
