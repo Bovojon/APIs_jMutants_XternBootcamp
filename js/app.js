@@ -18,7 +18,10 @@ function addMutant(mutant){
 $('#mutantList').append(li);
 }
 
-$.get({
-  url: mutantsUrl,
-  success: processMutants
+// Only get ajax after everything has loaded
+$(function(){
+  $.get({
+    url: mutantsUrl,
+    success: processMutants
+  });
 });
